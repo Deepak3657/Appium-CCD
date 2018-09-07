@@ -1,0 +1,27 @@
+language: node_js
+
+node_js: stable
+
+os: osx
+osx_image: xcode8
+
+install:
+    - npm install
+    - npm install appium@1.5.3
+
+script:
+    - npm run lint
+    - npm run test
+
+after_failure:
+    - cat appium.log
+
+cache:
+  directories:
+    - node_modules
+
+notifications:
+    email:
+        on_success: never
+        on_failure: change
+
